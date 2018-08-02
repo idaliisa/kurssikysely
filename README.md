@@ -14,5 +14,9 @@ Toimintoja
 *	yhteenveto laitoksen kursseista tietyn kysymyksen perusteella – kurssit järjestykseen
 *	kurssin yksityiskohtainen raportti
 
-## Sovellus
-https://kurssikysely18.herokuapp.com/
+
+[Sovellus](https://kurssikysely18.herokuapp.com/)
+
+[Tietokantakaavio](https://github.com/idaliisa/kurssikysely/blob/master/documentation/pictures/tietokantakaavio.png)
+
+[Käyttötapaukset](https://github.com/idaliisa/kurssikysely/blob/master/documentation/user_storyt.md)
