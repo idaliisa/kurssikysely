@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('questions_create') }}">
+    <input type="text" name="nimi"/>
+    <input type="submit" value="lisää kysymys"/>
+    <select name="kysymystyyppi">
+        <option value="kurssikohtainen">kurssikohtainen</option>
+        <option value="laitoskohtainen">laitoskohtainen</option>
+        <option value="tiedekuntakohtainen">tiedekuntakohtainen</option>
+    </select>
+</form>
+{% endblock %}

@@ -11,5 +11,5 @@ db = SQLAlchemy(app)
 from application import views
 
 from application.questions import models
-
+from application.questions import views
 db.create_all()
