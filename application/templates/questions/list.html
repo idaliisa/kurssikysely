@@ -10,6 +10,12 @@
     <tr>
       <td>{{ question.kysymys }}</td>
       <td>{{ question.kysymystyyppi }}</td>
+      <td>
+          <form method="POST" action="{{ url_for('questions_update') }}">
+              <input type="submit" value="muokkaa"/>
+              <input type="hidden" name="question_id" value="{{question.id}}"/>
+          </form>
+      </td>
     </tr>
     {% endfor %}
   </table>
