@@ -1,6 +1,10 @@
 from application import app, db
-from flask import render_template, request
+from flask import redirect, render_template, request, url_for
 from application.questions.models import Question
+
+@app.route("/questions", methods=["GET"])
+def questions_index():
+    return render_template("questions/list.html", questions = Question.query.all())
 
 @app.route("/questions/new/")
 def questions_form():
@@ -13,6 +17,5 @@ def questions_create():
     db.session().add(q)
     db.session().commit()
 
-    #print(request.form.get("nimi"))
 
-    return "hello world!"
+    return redirect(url_for("questions_index"))

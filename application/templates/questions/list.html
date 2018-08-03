@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>kysymys</th>
+      <th>kysymystyyppi</th>
+    </tr>
+    {% for question in questions %}
+    <tr>
+      <td>{{ question.kysymys }}</td>
+      <td>{{ question.kysymystyyppi }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
