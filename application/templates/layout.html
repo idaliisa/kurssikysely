@@ -6,9 +6,13 @@
     </head>
 
     <body>
+      <ul>
+        <li><a href="{{ url_for('questions_index') }}">Kysymyslista</a></li>
+        <li><a href="{{ url_for('questions_form') }}">Lisää kysymys</a></li>
+      </ul>
       {% block body %}
       <p>
-	Tähän sisältö muualta
+	      Tähän sisältö muualta
       </p>
       {% endblock %}
     </body>
