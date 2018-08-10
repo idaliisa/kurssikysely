@@ -7,7 +7,18 @@ from flask_sqlalchemy import SQLAlchemy
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///questions.db"
 app.config["SQLALCHEMY_ECHO"] = True
 
+
+#jos postgreSQL käytössä, yhdistetään siihen. Muutoin yhdistetään paikallisesti sqlLiteen
+import os
+
+if os.environ.get("HEROKU"):
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+else:
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///questions.db"    
+    app.config["SQLALCHEMY_ECHO"] = True
+
 db = SQLAlchemy(app)
+
 
 # toiminnallisuudet
 from application import views
@@ -35,4 +46,7 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 # tietokantataulut tarvittaessa
-db.create_all()
+try:
+    db.create_all()
+except:
+    pass
