@@ -19,6 +19,18 @@ def questions_update():
     id = request.form.get("question_id", type=int)
     return render_template("questions/update.html", q = Question.query.get(id))
 
+####
+@app.route("/questions/delete/", methods=["POST"])
+@login_required
+def questions_delete():
+    id = request.form.get("question_id", type=int)
+    q = Question.query.get(id)
+    db.session().delete(q)
+    db.session().commit()
+
+    return redirect(url_for("questions_index"))   
+###    
+
 @app.route("/questions/save/", methods=["POST"])
 @login_required
 def question_save():

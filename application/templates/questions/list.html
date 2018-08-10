@@ -16,6 +16,12 @@
               <input type="hidden" name="question_id" value="{{question.id}}"/>
           </form>
       </td>
+      <td>
+          <form method="POST" action="{{ url_for('questions_delete') }}">
+              <input type="submit" value="poista"/>
+              <input type="hidden" name="question_id" value="{{question.id}}"/>
+          </form>
+      </td>
     </tr>
     {% endfor %}
   </table>

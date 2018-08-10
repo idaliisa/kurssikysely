@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+  {% block body %}
+  <form method="POST" action="{{ url_for('users_create') }}">
+    <table>
+      <tr>
+        <td>
+            {{ form.nimi.label }}
+        </td>
+        <td>
+            {{ form.nimi }}
+        </td>
+        <td>
+            <ul>
+                {% for error in form.nimi.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            {{ form.kayttajatunnus.label }}
+        </td>
+        <td>
+            {{ form.kayttajatunnus }}
+        </td>
+        <td>
+            <ul>
+                {% for error in form.kayttajatunnus.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            {{ form.salasana.label }}
+        </td>
+        <td>
+            {{ form.salasana }}
+        </td>
+        <td>
+            <ul>
+                {% for error in form.salasana.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            {{ form.kayttajatyyppi.label }}
+        </td>
+        <td>
+            {{ form.kayttajatyyppi }}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+	    <input type="submit" value="Rekisteröi"/>
+        </td>
+      </tr>
+  </form>
+  {% endblock %}
