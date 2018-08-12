@@ -2,13 +2,8 @@
 from flask import Flask
 app = Flask(__name__)
 
-# tietokanta
-from flask_sqlalchemy import SQLAlchemy
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///questions.db"
-app.config["SQLALCHEMY_ECHO"] = True
 
-
-#jos postgreSQL käytössä, yhdistetään siihen. Muutoin yhdistetään paikallisesti sqlLiteen
+#jos postgreSQL käytössä, yhdistetään siihen. Muutoin yhdistetään paikallisesti sqLiteen
 import os
 
 if os.environ.get("HEROKU"):
