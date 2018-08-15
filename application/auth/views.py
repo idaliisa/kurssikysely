@@ -48,9 +48,3 @@ def users_create():
     db.session().commit()
 
     return redirect(url_for("index"))
-    # u = User(request.form.get("nimi"),request.form.get("kayttajatunnus"),request.form.get("salasana"), request.form.get("kayttajatyyppi"))
-
-    # db.session().add(u)
-    # db.session().commit()
-
-    # return redirect(url_for("index"))

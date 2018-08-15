@@ -3,7 +3,8 @@ from flask import Flask
 app = Flask(__name__)
 
 
-#jos postgreSQL käytössä, yhdistetään siihen. Muutoin yhdistetään paikallisesti sqLiteen
+#jos postgreSQL käytössä, yhdistetään siihen. Muutoin yhdistetään paikallisesti sqlLiteen
+from flask_sqlalchemy import SQLAlchemy
 import os
 
 if os.environ.get("HEROKU"):
@@ -45,3 +46,5 @@ try:
     db.create_all()
 except:
     pass
+
+

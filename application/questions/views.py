@@ -28,13 +28,11 @@ def questions_delete():
     db.session().delete(q)
     db.session().commit()
 
-    return redirect(url_for("questions_index"))   
-###    
+    return redirect(url_for("questions_index"))      
 
 @app.route("/questions/save/", methods=["POST"])
 @login_required
 def question_save():
-    #q = Question(request.form.get("id"), request.form.get("nimi"),request.form.get("kysymystyyppi"))
     id = request.form.get("question_id", type=int)
     q = Question.query.get(id)
     q.kysymys = request.form.get("nimi")
