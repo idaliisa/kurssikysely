@@ -12,7 +12,7 @@ class RegistrationForm(FlaskForm):
     nimi = StringField("nimi", [validators.Length(min=5, max=50)])
     kayttajatunnus = StringField("käyttäjätunnus", [validators.Length(min=5, max=50)])
     salasana = PasswordField("salasana", [validators.Length(min=5, max=50)])
-    kayttajatyyppi = SelectField("käyttäjätyyppi", choices=[("text", "pääkäyttäjä"), ("text", "laitoksen vastuuhenkilö"),("text", "opettaja"),("text", "oppilas")])
+    kayttajatyyppi = SelectField("käyttäjätyyppi", choices=[("paakayttaja", "pääkäyttäjä"), ("laitoshlo", "laitoksen vastuuhenkilö"),("opettaja", "opettaja"),("oppilas", "oppilas")])
 
     class Meta:
         csrf = False
