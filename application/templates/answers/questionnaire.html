@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <p>Vastaa kaikkiin alla oleviin kysymyksiin.</p>
+    <form method="GET" action="{{ url_for('questionnaire_form') }}">
+        {% for kysymys in kysymykset %}
+        <table>
+            <tr>
+                <td>{{ kysymys.kysymys }}</td>
+            </tr>
+            <tr>
+                <td> {{ form.vastaus }} </td>
+                <td>
+                    <ul>
+                        {% for error in form.vastaus.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    {% endfor %}
+        <tr>
+            <td>
+                <input type="submit" value="Tallenna"/>
+            </td>
+        </tr>
+    </form>    
+  {% endblock %}

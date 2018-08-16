@@ -26,6 +26,7 @@ from application.auth import models
 from application.auth import views
 
 from application.answers import models
+from application.answers import views
 
 from application.courses import models
 
