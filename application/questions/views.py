@@ -19,7 +19,6 @@ def questions_update():
     id = request.form.get("question_id", type=int)
     return render_template("questions/update.html", q = Question.query.get(id))
 
-####
 @app.route("/questions/delete/", methods=["POST"])
 @login_required
 def questions_delete():
