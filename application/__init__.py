@@ -25,6 +25,10 @@ from application.questions import views
 from application.auth import models
 from application.auth import views
 
+from application.answers import models
+
+from application.courses import models
+
 # kirjautuminen
 from application.auth.models import User
 from os import urandom
