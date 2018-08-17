@@ -1,4 +1,6 @@
 from application import db
+from sqlalchemy.sql import text
+
 
 class Question(db.Model):
 
@@ -13,3 +15,15 @@ class Question(db.Model):
     def __init__(self, kysymys, kysymystyyppi):
         self.kysymys = kysymys
         self.kysymystyyppi = kysymystyyppi
+
+    @staticmethod
+    def etsi_kurssille_kysymykset():
+        stmt = text("SELECT kysymys FROM 'Kysymys' WHERE ('Kysymys'.kysymystyyppi = 'tiedekuntakohtainen' OR 'Kysymys'.kysymystyyppi = 'laitoskohtainen' OR 'Kysymys'.kysymystyyppi = 'kurssikohtainen')")
+        res = db.engine.execute(stmt)
+
+        kysymykset = []
+
+        for row in res:
+            kysymykset.append(row)
+
+        return kysymykset

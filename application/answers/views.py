@@ -12,7 +12,7 @@ def questionnaire_form():
     form = QuestionnaireForm(request.form)
     
     if not form.validate():
-        return render_template("answers/questionnaire.html",  kysymykset = Question.query.all(), form = form)
+        return render_template("answers/questionnaire.html",  kysymykset = Question.etsi_kurssille_kysymykset(), form = form)
 
     
-    return render_template("answers/questionnaire.html",  kysymykset = Question.query.all(), form = form)
+    return render_template("answers/questionnaire.html",  kysymykset = Question.etsi_kurssille_kysymykset(), form = form)
