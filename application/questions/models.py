@@ -18,7 +18,7 @@ class Question(db.Model):
 
     @staticmethod
     def etsi_kurssille_kysymykset():
-        stmt = text("SELECT kysymys FROM 'Kysymys' WHERE ('Kysymys'.kysymystyyppi = 'tiedekuntakohtainen' OR 'Kysymys'.kysymystyyppi = 'laitoskohtainen' OR 'Kysymys'.kysymystyyppi = 'kurssikohtainen')")
+        stmt = text("SELECT kysymys, kysymystyyppi FROM 'Kysymys' WHERE (kysymystyyppi = 'tiedekuntakohtainen' OR kysymystyyppi = 'laitoskohtainen' OR kysymystyyppi = 'kurssikohtainen')")
         res = db.engine.execute(stmt)
 
         kysymykset = []
