@@ -1,6 +1,7 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
 from application.questions.models import Question
+from application.questions.forms import QuestionForm
 from flask_login import login_required
 
 @app.route("/questions", methods=["GET"])
@@ -11,29 +12,28 @@ def questions_index():
 @app.route("/questions/new/")
 @login_required
 def questions_form():
-    return render_template("questions/new.html")
+    return render_template("questions/new.html", form = QuestionForm())
 
-@app.route("/questions/update/", methods=["POST"])
+@app.route("/questions/update/<question_id>", methods=["POST"])
 @login_required
-def questions_update():
-    id = request.form.get("question_id", type=int)
-    return render_template("questions/update.html", q = Question.query.get(id))
+def questions_update(question_id):
 
-@app.route("/questions/delete/", methods=["POST"])
+    return render_template("questions/update.html", q = Question.query.get(question_id))
+
+
+@app.route("/questions/delete/<question_id>", methods=["POST"])
 @login_required
-def questions_delete():
-    id = request.form.get("question_id", type=int)
-    q = Question.query.get(id)
+def questions_delete(question_id):
+    q = Question.query.get(question_id)
     db.session().delete(q)
     db.session().commit()
 
     return redirect(url_for("questions_index"))      
 
-@app.route("/questions/save/", methods=["POST"])
+@app.route("/questions/save/<question_id>", methods=["POST"])
 @login_required
-def question_save():
-    id = request.form.get("question_id", type=int)
-    q = Question.query.get(id)
+def question_save(question_id):
+    q = Question.query.get(question_id)
     q.kysymys = request.form.get("nimi")
     q.kysymystyyppi = request.form.get("kysymystyyppi")
     db.session().commit()
@@ -43,7 +43,12 @@ def question_save():
 @app.route("/questions/", methods=["POST"])  
 @login_required  
 def questions_create():
-    q = Question(request.form.get("nimi"),request.form.get("kysymystyyppi"))
+    form = QuestionForm(request.form)
+
+    if not form.validate():
+        return render_template("questions/new.html", form = form)
+
+    q = Question(form.kysymys.data, form.kysymystyyppi.data)
 
     db.session().add(q)
     db.session().commit()

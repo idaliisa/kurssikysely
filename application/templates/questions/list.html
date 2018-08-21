@@ -11,15 +11,14 @@
       <td>{{ question.kysymys }}</td>
       <td>{{ question.kysymystyyppi }}</td>
       <td>
-          <form method="POST" action="{{ url_for('questions_update') }}">
+          <form method="POST" action="{{ url_for('questions_update', question_id=question.id) }}">
               <input type="submit" value="muokkaa"/>
-              <input type="hidden" name="question_id" value="{{question.id}}"/>
+              
           </form>
       </td>
       <td>
-          <form method="POST" action="{{ url_for('questions_delete') }}">
+          <form method="POST" action="{{ url_for('questions_delete', question_id=question.id) }}">
               <input type="submit" value="poista"/>
-              <input type="hidden" name="question_id" value="{{question.id}}"/>
           </form>
       </td>
     </tr>
