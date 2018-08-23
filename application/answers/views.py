@@ -11,7 +11,7 @@ def answers_index():
     return render_template("answers/list.html", answers = Answer.query.all())
 
 @app.route("/questionnaire/")
-#@login_required
+@login_required
 def questionnaire_form():
 
     form = QuestionnaireForm()
@@ -19,14 +19,14 @@ def questionnaire_form():
     return render_template("answers/questionnaire.html", form = form, kysymykset = Question.query.all())
 
 @app.route("/questionnaire/save", methods=["POST"])
-#@login_required
+@login_required
 def questionnaire_save():
     form = QuestionnaireForm(request.form)
 
     kysymys_id = request.form.get("kysymys_id", type=int)
   
     if not form.validate():
-        return render_template("questionnaire.html", form = form, kysymykset = Question.query.all())
+        return render_template("answers/questionnaire.html", form = form, kysymykset = Question.query.all())
   
     a = Answer(form.vastaus.data)
     a.kysymys_id = kysymys_id
