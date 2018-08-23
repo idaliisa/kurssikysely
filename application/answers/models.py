@@ -9,6 +9,5 @@ class Answer(db.Model):
     
     kysymys_id = db.Column(db.Integer, db.ForeignKey('Kysymys.id'), nullable=False)
 
-    def __init__(self, vastaus, kysymys_id):
+    def __init__(self, vastaus):
         self.vastaus = vastaus
-        self.kysymys_id = kysymys_id

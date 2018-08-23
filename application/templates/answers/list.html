@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    
+    {% for answer in answers %}
+    <tr>
+      <td>{{ answer.vastaus }}</td>
+      <td>{{ answer.kysymys_id }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

@@ -6,13 +6,32 @@ from application.answers.models import Answer
 from application.answers.forms import QuestionnaireForm
 from application.questions.models import Question
 
-@app.route("/questionnaire", methods=["GET", "POST"])
-@login_required
-def questionnaire_form():
-    form = QuestionnaireForm(request.form)
-    
-    if not form.validate():
-        return render_template("answers/questionnaire.html",  kysymykset = Question.etsi_kurssille_kysymykset(), form = form)
+@app.route("/answers/", methods=["GET"])
+def answers_index():
+    return render_template("answers/list.html", answers = Answer.query.all())
 
-    
-    return render_template("answers/questionnaire.html",  kysymykset = Question.etsi_kurssille_kysymykset(), form = form)
+@app.route("/questionnaire/")
+#@login_required
+def questionnaire_form():
+
+    form = QuestionnaireForm()
+
+    return render_template("answers/questionnaire.html", form = form, kysymykset = Question.query.all())
+
+@app.route("/questionnaire/save", methods=["POST"])
+#@login_required
+def questionnaire_save():
+    form = QuestionnaireForm(request.form)
+
+    kysymys_id = request.form.get("kysymys_id", type=int)
+  
+    if not form.validate():
+        return render_template("questionnaire.html", form = form, kysymykset = Question.query.all())
+  
+    a = Answer(form.vastaus.data)
+    a.kysymys_id = kysymys_id
+  
+    db.session().add(a)
+    db.session().commit()
+  
+    return redirect(url_for("answers_index"))
