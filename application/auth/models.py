@@ -1,4 +1,8 @@
 from application import db
+from application.courses import models
+
+from sqlalchemy.sql import text
+
 
 class User(db.Model):
 
@@ -9,7 +13,7 @@ class User(db.Model):
     kayttajatunnus = db.Column(db.String(150), nullable=False)
     salasana = db.Column(db.String(150), nullable=False)
     kayttajatyyppi = db.Column(db.String(150), nullable=False)
-
+    
     def __init__(self, nimi, kayttajatunnus, salasana, kayttajatyyppi):
         self.nimi = nimi
         self.salasana = salasana
@@ -28,4 +32,12 @@ class User(db.Model):
     def is_authenticated(self):
         return True
 
-
+    def roles(self):
+        if self.kayttajatyyppi == "paakayttaja":
+            return ["paakayttaja"]
+        if self.kayttajatyyppi == "laitoshlo":
+            return ["laitoshlo"]
+        if self.kayttajatyyppi == "opettaja":
+            return ["opettaja"]
+        if self.kayttajatyyppi == "oppilas":
+            return ["oppilas"]

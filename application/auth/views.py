@@ -1,7 +1,8 @@
-from flask import render_template, request, redirect, url_for
-from flask_login import login_user, logout_user, login_required
 
-from application import app, db
+from flask import render_template, request, redirect, url_for
+from flask_login import login_user, logout_user, current_user
+
+from application import app, db, login_required
 from application.auth.models import User
 from application.auth.forms import LoginForm, RegistrationForm
 
@@ -29,13 +30,12 @@ def auth_logout():
 
 
 @app.route("/auth/registration/")
-@login_required
 def registration_form():
     return render_template("auth/registration.html", form = RegistrationForm())
 
 
 @app.route("/auth/", methods=["POST"])  
-@login_required  
+@login_required(role="paakayttaja")
 def users_create():
     form = RegistrationForm(request.form)
 

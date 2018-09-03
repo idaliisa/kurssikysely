@@ -3,27 +3,25 @@ from flask import redirect, render_template, request, url_for
 from application.courses.models import Course
 from application.auth.models import User
 from application.courses.forms import CourseForm
-from flask_login import current_user, login_required
+from flask_login import current_user
 
 @app.route("/courses", methods=["GET"])
-@login_required
 def courses_index():
     return render_template("courses/list.html", courses = Course.query.all())
 
 @app.route("/courses/new/")
-@login_required
 def courses_form():
     return render_template("courses/new.html", form = CourseForm())
 
 @app.route("/courses/update/<course_id>", methods=["POST"])
-@login_required
+@login_required(role="paakayttaja")
 def courses_update(course_id):
 
     return render_template("courses/update.html", c = Course.query.get(course_id))
 
 
 @app.route("/courses/delete/<course_id>", methods=["POST"])
-@login_required
+@login_required(role="paakayttaja")
 def courses_delete(course_id):
     c = Course.query.get(course_id)
     db.session().delete(c)
@@ -32,7 +30,7 @@ def courses_delete(course_id):
     return redirect(url_for("courses_index"))      
 
 @app.route("/courses/save/<course_id>", methods=["POST"])
-@login_required
+@login_required(role="paakayttaja")
 def course_save(course_id):
     c = Course.query.get(course_id)
     c.nimi = request.form.get("nimi")
@@ -43,7 +41,7 @@ def course_save(course_id):
     return redirect(url_for("courses_index"))
 
 @app.route("/courses/", methods=["POST"])  
-@login_required  
+@login_required (role="paakayttaja") 
 def courses_create():
     form = CourseForm(request.form)
 
