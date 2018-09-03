@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>nimi</th>
+      <th>laitos</th>
+      <th>tiedekunta</th>
+    </tr>
+    {% for course in courses %}
+    <tr>
+      <td>{{ course.nimi }}</td>
+      <td>{{ course.laitos }}</td>
+      <td>{{ course.tiedekunta }}</td>
+      <td>
+          <form method="POST" action="{{ url_for('courses_update', course_id=course.id) }}">
+              <input type="submit" value="muokkaa"/>
+              
+          </form>
+      </td>
+      <td>
+          <form method="POST" action="{{ url_for('courses_delete', course_id=course.id) }}">
+              <input type="submit" value="poista"/>
+          </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

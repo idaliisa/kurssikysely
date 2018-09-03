@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('course_save', course_id=c.id) }}">
+    <input type="text" name="nimi" value="{{c.nimi}}"/>
+    <input type="text" name="laitos" value="{{c.laitos}}"/>
+    <input type="text" name="tiedekunta" value="{{c.tiedekunta}}"/>
+    <input type="submit" value="tallenna"/>
+</form>
+{% endblock %}
