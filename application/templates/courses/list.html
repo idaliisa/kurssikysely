@@ -14,13 +14,18 @@
       <td>{{ course.tiedekunta }}</td>
       <td>
           <form method="POST" action="{{ url_for('courses_update', course_id=course.id) }}">
-              <input type="submit" value="muokkaa"/>
+              <input type="submit" value="muokkaa kurssia"/>
               
           </form>
       </td>
       <td>
           <form method="POST" action="{{ url_for('courses_delete', course_id=course.id) }}">
-              <input type="submit" value="poista"/>
+              <input type="submit" value="poista kurssi"/>
+          </form>
+      </td>                  
+      <td> 
+          <form method="POST" action="{{ url_for('add_users', course_id=course.id) }}">
+              <input type="submit" value="lisää käyttäjä"/>
           </form>
       </td>
     </tr>

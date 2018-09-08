@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('save_user', course_id=course_id) }}">
+  <table>
+    <tr>        
+        <select name="user_id" >   
+            {% for user in users %}         
+            <option value={{user.id}}>{{user.nimi}}</option>   
+            {% endfor %}      
+        </select>
+       <input type="submit" value="tallenna käyttäjä"/>
+    </tr>
+  </table>
+</form>
+{% endblock %}
+
