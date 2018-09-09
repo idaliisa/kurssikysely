@@ -11,7 +11,7 @@ def answers_index():
     return render_template("answers/list.html", answers = Answer.query.all())
 
 @app.route("/questionnaire/")
-@login_required(role="opiskelija")
+@login_required(role="oppilas")
 def questionnaire_form():
 
     form = QuestionnaireForm()
@@ -19,7 +19,7 @@ def questionnaire_form():
     return render_template("answers/questionnaire.html", form = form, kysymykset = Question.query.all())
 
 @app.route("/questionnaire/save", methods=["POST"])
-@login_required(role="opiskelija")
+@login_required(role="oppilas")
 def questionnaire_save():
     form = QuestionnaireForm(request.form)
 
