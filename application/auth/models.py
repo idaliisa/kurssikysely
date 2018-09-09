@@ -1,6 +1,5 @@
 from application import db
 from application.courses.models import KurssiKayttaja
-
 from sqlalchemy.sql import text
 
 
@@ -13,6 +12,7 @@ class User(db.Model):
     kayttajatunnus = db.Column(db.String(150), nullable=False)
     salasana = db.Column(db.String(150), nullable=False)
     kayttajatyyppi = db.Column(db.String(150), nullable=False)
+    kysymykset = db.relationship("Question", backref='Kayttaja', lazy=True)
     kurssit = db.relationship('Course', secondary=KurssiKayttaja, backref='kayttaja')
     
     def __init__(self, nimi, kayttajatunnus, salasana, kayttajatyyppi):

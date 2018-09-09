@@ -20,7 +20,7 @@ def auth_login():
                                error = "Väärä käyttäjätunnus tai salasana")
 
     login_user(user)
-    return redirect(url_for("index"))  
+    return redirect(url_for("show_courses"))  
 
 @app.route("/auth/logout")
 def auth_logout():
@@ -48,3 +48,8 @@ def users_create():
     db.session().commit()
 
     return redirect(url_for("index"))
+
+@app.route("/auth/courses/")
+def show_courses():
+    return render_template("auth/courses.html", courses = current_user.kurssit)
+ 

@@ -16,7 +16,7 @@ class Course(db.Model):
     laitos = db.Column(db.String(50), nullable=False)
     tiedekunta = db.Column(db.String(50), nullable=False)
     kayttajat = db.relationship('User', secondary=KurssiKayttaja, backref='kurssi')
-    
+   
     def __init__(self, nimi, laitos, tiedekunta):
         self.nimi = nimi
         self.laitos = laitos

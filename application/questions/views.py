@@ -2,7 +2,7 @@ from application import app, db
 from flask import redirect, render_template, request, url_for
 from application.questions.models import Question
 from application.questions.forms import QuestionForm
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 @app.route("/questions", methods=["GET"])
 @login_required
@@ -49,6 +49,7 @@ def questions_create():
         return render_template("questions/new.html", form = form)
 
     q = Question(form.kysymys.data, form.kysymystyyppi.data)
+    q.kayttaja_id=current_user.id
 
     db.session().add(q)
     db.session().commit()
