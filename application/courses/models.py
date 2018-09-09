@@ -13,14 +13,11 @@ class Course(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     nimi = db.Column(db.String(500), nullable=False)
-    laitos = db.Column(db.String(50), nullable=False)
-    tiedekunta = db.Column(db.String(50), nullable=False)
     kayttajat = db.relationship('User', secondary=KurssiKayttaja, backref='kurssi')
+    kysymykset = db.relationship("Question", backref='Kurssi', lazy=True)
    
-    def __init__(self, nimi, laitos, tiedekunta):
+    def __init__(self, nimi):
         self.nimi = nimi
-        self.laitos = laitos
-        self.tiedekunta = tiedekunta
 
     def poista_KurssiKayttaja(kurssi_id):
         stmt = KurssiKayttaja.delete(kurssi_id=kurssi_id)

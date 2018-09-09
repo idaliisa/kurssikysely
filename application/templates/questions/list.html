@@ -4,12 +4,10 @@
   <table>
     <tr>
       <th>kysymys</th>
-      <th>kysymystyyppi</th>
     </tr>
     {% for question in questions %}
     <tr>
       <td>{{ question.kysymys }}</td>
-      <td>{{ question.kysymystyyppi }}</td>
       <td>
           <form method="POST" action="{{ url_for('questions_update', question_id=question.id) }}">
               <input type="submit" value="muokkaa"/>

@@ -12,7 +12,6 @@ class User(db.Model):
     kayttajatunnus = db.Column(db.String(150), nullable=False)
     salasana = db.Column(db.String(150), nullable=False)
     kayttajatyyppi = db.Column(db.String(150), nullable=False)
-    kysymykset = db.relationship("Question", backref='Kayttaja', lazy=True)
     kurssit = db.relationship('Course', secondary=KurssiKayttaja, backref='kayttaja')
     
     def __init__(self, nimi, kayttajatunnus, salasana, kayttajatyyppi):
@@ -36,8 +35,6 @@ class User(db.Model):
     def roles(self):
         if self.kayttajatyyppi == "paakayttaja":
             return ["paakayttaja"]
-        if self.kayttajatyyppi == "laitoshlo":
-            return ["laitoshlo"]
         if self.kayttajatyyppi == "opettaja":
             return ["opettaja"]
         if self.kayttajatyyppi == "oppilas":

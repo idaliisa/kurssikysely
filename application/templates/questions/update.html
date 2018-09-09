@@ -3,11 +3,6 @@
 {% block body %}
 <form method="POST" action="{{ url_for('question_save', question_id=q.id) }}">
     <input type="text" name="nimi" value="{{q.kysymys}}"/>
-    <select name="kysymystyyppi">
-        <option value="kurssikohtainen">kurssikohtainen</option>
-        <option value="laitoskohtainen">laitoskohtainen</option>
-        <option value="tiedekuntakohtainen">tiedekuntakohtainen</option>
-    </select>
     <input type="submit" value="tallenna"/>
 </form>
 {% endblock %}

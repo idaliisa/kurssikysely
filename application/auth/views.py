@@ -30,7 +30,7 @@ def auth_logout():
 
 
 @app.route("/auth/registration/")
-def registration_form():
+def registration_form(role="paakayttaja"):
     return render_template("auth/registration.html", form = RegistrationForm())
 
 

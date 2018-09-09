@@ -30,7 +30,7 @@ login_manager.login_view = "auth_login"
 login_manager.login_message = "Please login to use this functionality."
 
 
-#käyttäjäroolit
+# käyttäjäroolit
 from functools import wraps
 def login_required(role="ANY"):
     def wrapper(fn):

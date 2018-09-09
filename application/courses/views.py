@@ -10,6 +10,7 @@ def courses_index():
     return render_template("courses/list.html", courses = Course.query.all())
 
 @app.route("/courses/new/")
+@login_required(role="paakayttaja")
 def courses_form():
     return render_template("courses/new.html", form = CourseForm())
 
@@ -34,8 +35,6 @@ def courses_delete(course_id):
 def course_save(course_id):
     c = Course.query.get(course_id)
     c.nimi = request.form.get("nimi")
-    c.laitos = request.form.get("laitos")
-    c.tiedekunta = request.form.get("tiedekunta")
     db.session().commit()
 
     return redirect(url_for("courses_index"))
@@ -48,7 +47,7 @@ def courses_create():
     if not form.validate():
         return render_template("courses/new.html", form = form)
 
-    c = Course(form.nimi.data, form.laitos.data, form.tiedekunta.data)
+    c = Course(form.nimi.data)
 
     db.session().add(c)
     db.session().commit()
