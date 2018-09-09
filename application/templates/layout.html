@@ -16,28 +16,30 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('questions_index') }} ">Kysymyslista</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('questions_form') }} ">Lisää kysymys</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('registration_form') }} ">Lisää käyttäjä</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('questionnaire_form') }} ">Täytä kysely</a>
+              <a class="nav-link" href="{{ url_for('show_courses') }} ">Omat kurssit</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('courses_form') }} ">Lisää kurssi</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('courses_index') }} ">Kurssilista</a>
+              <a class="nav-link" href="{{ url_for('courses_index') }} ">Kurssien hallinta</a>
             </li>
-            
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('questions_form') }} ">Lisää kysymys</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('questions_index') }} ">Kysymysten hallinta</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('questionnaire_form') }} ">Täytä kysely</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('registration_form') }} ">Lisää käyttäjä</a>
+            </li> 
           </ul>
           <div class="form-inline mt-2 mt-md-0">
             {% if current_user.is_authenticated %}
-            <a href="{{ url_for('auth_logout') }}">Kirjautunut nimellä {{ current_user.nimi }} -- Kirjaudu ulos</a>
+            <a href="{{ url_for('auth_logout') }}">Kirjautunut nimellä: {{ current_user.nimi }} -- Kirjaudu ulos</a>
             {% else %}
             <a href="{{ url_for('auth_login') }}">Kirjaudu sisään</a>
             {% endif %}
