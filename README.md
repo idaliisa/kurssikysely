@@ -10,11 +10,12 @@ Tässä luodaan kurssikyselyjärjestelmä. Järjestelmään kirjautunueet opetta
 *   käyttäjän lisääminen kurssille
 *	kysymyksien lisäys, poisto ja muutos
 *	kyselyyn vastaaminen
+### Toteuttamatomia toimintoja
 *	yhteenveto kurssista – kyselyyn vastanneiden lukumäärä
 *	kurssin yksityiskohtainen raportti - vastaukset kysymyksiin
 
 ### Sovellus
-Kirjautuminen [Sovellukseen](https://kurssikysely18.herokuapp.com/) pääkäyttäjätunnuksilla
+Kirjautuminen [sovellukseen](https://kurssikysely18.herokuapp.com/) pääkäyttäjätunnuksilla
 ```
 käyttäjätunnus: hello
 salasana: world

@@ -38,7 +38,7 @@ INSERT INTO 'Kayttaja' (nimi, kayttajatunnus, salasana, kayttajatyyppi) values (
 
 # Asennus palvelimelle (Heroku)
 ### Ennen asennusta
-Tässä oletetaan että virtuaaliympäristö on aktiivinen ja riippuvuudet on ladattu (kts. asennus paikallisesti). Käytössä tulee olla herokuja PostgreSQL. Muista myös kirjautua herokuun ensin.
+Tässä oletetaan että virtuaaliympäristö on aktiivinen ja riippuvuudet on ladattu (kts. asennus paikallisesti). Käytössä tulee olla heroku ja PostgreSQL. Muista myös kirjautua herokuun ensin.
 
 ### Luo sovellukselle paikka herokuun
 
