@@ -34,4 +34,10 @@ def questionnaire_save():
     db.session().add(a)
     db.session().commit()
   
-    return redirect(url_for("answers_index"))
+    return render_template("answers/questionnaire.html", form = form, kysymykset = Question.query.all())
+
+
+@app.route("/questionnaire/answers")
+@login_required(role="opettaja")
+def show_answers():
+    return render_template("answers/list.html", answers = Answer.query.all())
