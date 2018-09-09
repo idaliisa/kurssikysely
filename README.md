@@ -20,7 +20,7 @@ käyttäjätunnus: hello
 salasana: world
 ```
 
-###Dokumentaatio
+### Dokumentaatio
 [Tietokantarakenne](https://github.com/idaliisa/kurssikysely/blob/master/documentation/tietokantakaavio.md)
 
 [Käyttötapaukset](https://github.com/idaliisa/kurssikysely/blob/master/documentation/user_storyt.md)

@@ -1,12 +1,13 @@
-#Tietokantarakenne
+# Tietokantarakenne
 
-###Tietokannanhallintajärjestelmä
-Paikallisesti käytössä on SqLite ja palvelimella (Heroku) postgresql.
+### Tietokannanhallintajärjestelmä
+Paikallisesti käytössä on SQLite ja palvelimella (Heroku) PostgreSQL.
 
-###Tietokantakaavio
+### Tietokantakaavio
 <img src= "https://github.com/idaliisa/kurssikysely/blob/master/documentation/pictures/tietokantakaavio.png">
 
-###CREATE TABLE -lauseet
+### CREATE TABLE -lauseet
+```
 CREATE TABLE IF NOT EXISTS "Kurssi" (
         id INTEGER NOT NULL,
         nimi VARCHAR(500) NOT NULL,
@@ -41,3 +42,4 @@ CREATE TABLE IF NOT EXISTS "Vastaus" (
         PRIMARY KEY (id),
         FOREIGN KEY(kysymys_id) REFERENCES "Kysymys" (id)
 );
+```

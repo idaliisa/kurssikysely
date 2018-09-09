@@ -1,8 +1,7 @@
+# Asennus paikallisesti
 ### Ennen asennusta
 Asennusta on testattu MacOs käyttöjärjestelmällä.
-Käytössä tulee olla python3, pip, venv-kirjasto, heroku, sqlite3 ja PostgreSQL.
-
-# Asennus paikallisesti
+Käytössä tulee olla python3, pip, venv-kirjasto ja sqlite3.
 
 ### Kloonaa projekti haluamaasi kansioon seuraavalla komennolla
 ```
@@ -38,7 +37,8 @@ INSERT INTO 'Kayttaja' (nimi, kayttajatunnus, salasana, kayttajatyyppi) values (
 
 
 # Asennus palvelimelle (Heroku)
-Tässä oletetaan että virtuaaliympäristö on aktiivinen ja riippuvuudet on ladattu (kts. asennus paikallisesti). Muista myös kirjautua herokuun ensin.
+### Ennen asennusta
+Tässä oletetaan että virtuaaliympäristö on aktiivinen ja riippuvuudet on ladattu (kts. asennus paikallisesti). Käytössä tulee olla herokuja PostgreSQL. Muista myös kirjautua herokuun ensin.
 
 ### Luo sovellukselle paikka herokuun
 
